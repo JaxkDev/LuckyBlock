@@ -1,0 +1,17 @@
+---
+
+enabled: true
+
+debug: false
+#Only turn this on if advised otherwise it will spam your log.
+
+block: 19
+#Defualt is set to sponge (ID: 19)
+
+economy:
+  - enabled: false
+  - min: -500
+  - max: 500
+#set to true for LuckyBlocks to set money and set min & max values
+
+---
