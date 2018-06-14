@@ -12,12 +12,25 @@ use pocketmine\command\CommandSender;
 use pocketmine\command\ConsoleCommandSender;
 
 class main extends PluginBase implements Listener{
+	
+	public function debug($msg){
+		if($this->cfg->get('debug') == true){
+			$this->getLogger()->log($msg);
+			return true;
+		}
+		return false;
+	}
 		
 	public function onEnable(){
         if (!is_dir($this->getDataFolder())) {
             @mkdir($this->getDataFolder());
         }
-		
+		$this->build = "06A";
+		$this->version = "1.0.0";
+        $this->saveResource("config.yml");
+        $this->cfg = new Config($this->getDataFolder()."config.yml", Config::YAML, []);
+		$this->debug('Config Loaded.');
+		$this->debug('Plugin Loaded with 0 errors');
 	}
 	
 	public function onDisable(){
