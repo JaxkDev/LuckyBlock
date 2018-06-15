@@ -1,2 +1,3 @@
-# LuckyBlock
-Adds a element of surprise to MCPE Servers running PMMP
+# LuckyBlock 1.0
+
+A PocketMine-MP Plugin that gives a server the element of suprise.

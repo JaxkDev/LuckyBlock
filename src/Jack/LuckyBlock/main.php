@@ -28,12 +28,15 @@ class main extends PluginBase implements Listener{
 		$this->build = "06A";
 		$this->version = "1.0.0";
         $this->saveResource("config.yml");
+        $this->saveResource("help.txt");
         $this->cfg = new Config($this->getDataFolder()."config.yml", Config::YAML, []);
 		$this->debug('Config Loaded.');
 		$this->debug('Plugin Loaded with 0 errors');
 	}
 	
 	public function onDisable(){
-        
+        $this->cfg->save(true);
+        $this->debug("Config Saved.");
+        $this->debug("Plugin Disabled.");
     }
 }

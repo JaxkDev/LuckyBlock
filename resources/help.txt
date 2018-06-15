@@ -1,0 +1,28 @@
++———————————————————————————+
+|     LuckyBlock Plugin     |
+|                           |
+| Build   : 003             |
+| Version : 1.0             |
+| Release : Development     |
++———————————————————————————+
+
+== ENGLISH ==
+
+debug   : Enable all logging, usefull to debug errors and trace the plugin as it runs.
+
+enabled : Turns on / off the plugin.
+
+block   : Block ID of the luckyblock defualt is Sponge ID: 19
+
+economy
+ - enabled : Turns on / off money support
+ - min     : Minimum amount it can give defualt -500
+ - max     : Maximum amount it can give defualt 500
+
+=============
+
+
+== SPANISH ==
+
+
+=============
