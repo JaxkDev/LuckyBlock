@@ -8,7 +8,7 @@ main: Jack\LuckyBlock\Main
 commands:
   luckyblock:
     description: Use the luckyblock plugin !
-    permission: lb.use
+    permission: lb.edit
     usage: /luckyblock help
     aliases:
     - lb

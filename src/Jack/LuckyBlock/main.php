@@ -25,13 +25,16 @@ class main extends PluginBase implements Listener{
         if (!is_dir($this->getDataFolder())) {
             @mkdir($this->getDataFolder());
         }
-		$this->build = "06A";
+		$this->build = "001A";
 		$this->version = "1.0.0";
         $this->saveResource("config.yml");
         $this->saveResource("help.txt");
         $this->cfg = new Config($this->getDataFolder()."config.yml", Config::YAML, []);
 		$this->debug('Config Loaded.');
 		$this->debug('Plugin Loaded with 0 errors');
+        if($this->cfg->get(“economy”)[“enabled”] == true){
+            $this->debug(“Looking for Economy Plugin.”);
+        }
 	}
 	
 	public function onDisable(){
