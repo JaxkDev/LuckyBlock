@@ -28,7 +28,11 @@ class main extends PluginBase implements Listener{
             @mkdir($this->getDataFolder());
 		}
 		$this->prefix = C::AQUA."[".C::GOLD."LuckyBlock".C::AQUA."] ".C::RESET;
+<<<<<<< HEAD
 		$this->build = "018A";
+=======
+		$this->build = "014A";
+>>>>>>> 7b69acd7c154879de87b3c6754263a03896e7f71
 		$this->version = "1.0.0";
 		$this->notes = "This build is not a release and does contain some bugs.";
         $this->saveResource("config.yml");
