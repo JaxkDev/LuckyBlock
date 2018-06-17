@@ -1,19 +1,24 @@
 ---
 name: LuckyBlock
+
 author: Jackthehack21
+
 version: 1.0.0
+
 api:
 - 3.0.0-ALPHA12
-main: Jack\LuckyBlock\Main
+
+main: Jack\LuckyBlock\main
+
 commands:
   luckyblock:
     description: Use the luckyblock plugin !
     permission: lb.edit
     usage: /luckyblock help
-    aliases:
-    - lb
-	
-permission:
+    aliases: 
+     - lb
+            
+permissions:
   lb.use: 
     default: true
   lb.edit:

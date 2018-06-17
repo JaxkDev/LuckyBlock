@@ -8,10 +8,25 @@ debug: false
 block: 19
 #Defualt is set to sponge (ID: 19)
 
-economy:
-  - enabled: false
-  - min: -500
-  - max: 500
-#set to true for LuckyBlocks to set money and set min & max values
+economy: true
+
+# ^^ set to true for LuckyBlocks to set money and set min & max values ^^
+
+rewards:
+
+  money: 
+    min: -500 #Will only work if economy is enabled and found.
+    max: 500
+
+  chest:
+    "19" # These are block/items that could appear in chest !
+    "1"
+
+  mobs:
+    creeper: true
+    pig: true      # What mobs could it spawn ?
+    cow: true
+    skeleton: true
+    spider: true
 
 ---
