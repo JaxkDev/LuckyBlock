@@ -1,7 +1,6 @@
 +———————————————————————————+
 |     LuckyBlock Plugin     |
 |                           |
-| Build   : 003             |
 | Version : 1.0             |
 | Release : Development     |
 +———————————————————————————+
