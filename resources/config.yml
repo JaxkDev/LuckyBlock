@@ -9,7 +9,7 @@ block: 19
 #Defualt is set to sponge (ID: 19)
 
 economy: true
-
+#Must have EconomyAPI for this to actually enable.
 # ^^ set to true for LuckyBlocks to set money and set min & max values ^^
 
 rewards:
@@ -22,11 +22,10 @@ rewards:
     "19" # These are block/items that could appear in chest !
     "1"
 
-  mobs:
-    creeper: true
-    pig: true      # What mobs could it spawn ?
-    cow: true
-    skeleton: true
-    spider: true
+  mobs: true #Spawn mobs at their location, nothing too OP like ender dragons etc
+  
+  replace:
+    "2"
+    "15" #Change the lucky block to one of these 
 
 ---
