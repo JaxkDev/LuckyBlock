@@ -28,11 +28,8 @@ class main extends PluginBase implements Listener{
             @mkdir($this->getDataFolder());
 		}
 		$this->prefix = C::AQUA."[".C::GOLD."LuckyBlock".C::AQUA."] ".C::RESET;
-<<<<<<< HEAD
 		$this->build = "018A";
-=======
 		$this->build = "014A";
->>>>>>> 7b69acd7c154879de87b3c6754263a03896e7f71
 		$this->version = "1.0.0";
 		$this->notes = "This build is not a release and does contain some bugs.";
         $this->saveResource("config.yml");
@@ -61,7 +58,6 @@ class main extends PluginBase implements Listener{
 			}
 		}
 		$this->getServer()->getPluginManager()->registerEvents(new events($this), $this);
-		//rand($this->cfg->get("economy")["min"], $this->cfg->get("economy")["max"]);
 		if($this->cfg->get('debug') == true){
 			$this->getLogger()->notice("Plugin Loaded !\n\n".C::GOLD."LuckyBlock Debug Info (LBDI):\n".C::AQUA."Build: ".C::GREEN.$this->build."\n".C::AQUA."Notes: ".C::GREEN.$this->notes."\n");
 		}
