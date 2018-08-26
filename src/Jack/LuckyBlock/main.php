@@ -62,7 +62,6 @@ class main extends PluginBase implements Listener{
 			$this->getLogger()->notice("Plugin Loaded !\n\n".C::GOLD."LuckyBlock Debug Info (LBDI):\n".C::AQUA."Build: ".C::GREEN.$this->build."\n".C::AQUA."Notes: ".C::GREEN.$this->notes."\n");
 		}
 	}
-	
 	public function onDisable(){
         $this->cfg->save(true);
 		if($this->cfg->get('debug') == true){
