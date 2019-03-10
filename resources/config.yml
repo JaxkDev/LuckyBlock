@@ -12,20 +12,7 @@ economy: true
 #Must have EconomyAPI for this to actually enable.
 # ^^ set to true for LuckyBlocks to set money and set min & max values ^^
 
-rewards:
-
-  money: 
-    min: -500 #Will only work if economy is enabled and found.
-    max: 500
-
-  chest:
-    "19" # These are block/items that could appear in chest !
-    "1"
-
-  mobs: true #Spawn mobs at their location, nothing too OP like ender dragons etc
-  
-  replace:
-    "2"
-    "15" #Change the lucky block to one of these 
+money_min: -500 #Will only work if economy is enabled and found.
+money_max: 500
 
 ---

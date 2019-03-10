@@ -26,27 +26,6 @@ class events implements Listener
     {
         $this->main = $plugin;
     }
-
-    public function isExistsEntity($name): bool
-    {
-        $nbt = new CompoundTag("", [
-            new ListTag("Pos", [
-                new DoubleTag("", 0),
-                new DoubleTag("", 0),
-                new DoubleTag("", 0),
-            ]),
-            new ListTag("Rotation", [
-                new FloatTag("", 0),
-                new FloatTag("", 0),
-            ])
-        ]);
-        $name = str_replace(" ", "", ucwords($name));
-        $entity = Entity::createEntity($name, $this->main->getServer()->getDefaultLevel(), $nbt);
-        if (!($entity instanceof Entity))
-            return false;
-        $entity->close();
-        return true;
-    }
     
     public function blockBreak(BlockBreakEvent $event)
     {
@@ -54,48 +33,28 @@ class events implements Listener
             return;
         }
         $block = $event->getBlock();
-        if($this->main->cfg->get('debug')){
-            $this->main->getLogger()->info($block->getId()." was broken");
-        }
+        $this->main->debug($block->getId()." was broken");
         if($block->getId() == $this->main->cfg->get('block')){
-            if($this->main->cfg->get('debug')){
-                $this->main->getLogger()->info($block->getId()." triggered LB");
-            }
+            $this->main->debug($block->getId()." triggered LB");
             $player = $event->getPlayer();
             $event->setCancelled();
             $rand = rand(1, 5);
-            if($this->main->cfg->get('debug') == true){
-                $this->main->getLogger()->info('Got number: '.$rand);
-            }
+            $this->main->debug('Got number: '.$rand);
             switch($rand){
                 case 1:
+                case 2: //More chance
                     //Give them some $$$
                     $player->getLevel()->setBlock($block, new Block(Block::AIR), true, true);
                     if(!isset($this->main->economy)){
                         break;
                     }
-                    $mon = rand($this->main->cfg->get('rewards')['money']['min'], $this->main->cfg->get('rewards')['money']['max']);
-                    $this->main->economy::getInstance()->addMoney($player, $mon);
-                    $player->sendMessage(C::GOLD."Hmmm,  £".$mon."Magically transferred into your bank balance !");
-                    break;
-                case 2:
-                    //Give em a mob
-                    $player->getLevel()->setBlock($block, new Block(Block::AIR), true, true);
-                    $nbt = new CompoundTag("", [
-                        new ListTag("Pos", [
-                            new DoubleTag("", $block->getX()),
-                            new DoubleTag("", $block->getY()),
-                            new DoubleTag("", $block->getZ()),
-                        ]),
-                        new ListTag("Rotation", [
-                            new FloatTag("", $player->getYaw()),
-                            new FloatTag("", $player->getPitch()),
-                        ]),
-                        new StringTag("CustomName", 'Cow')
-                    ]);
-                    $entity = Entity::createEntity('Cow', $player->getLevel(), $nbt);
-                    $entity->spawnToAll();
-                    $player->sendMessage("Woah look at what appeared !");
+                    $mon = rand($this->main->cfg->get('money_min'), $this->main->cfg->get('money_max'));
+                    if($mon >= 0){
+                        $this->main->economy::getInstance()->addMoney($player, $mon);
+                    } else {
+                        $this->main->economy::getInstance()->reduceMoney($player, $mon);
+                    }
+                    $player->sendMessage(C::GOLD."Hmmm,  £".$mon." Magically transferred into your bank balance !");
                     break;
                 case 3:
                     //What about a chest...
@@ -109,10 +68,10 @@ class events implements Listener
                 case 5:
                     //change block to dirt, what good exchange rate.
                     $player->getLevel()->setBlock($block, new Block(Block::GRASS), true, true);
+                    $player->sendMessage("Pleasure doing business !");
                     break;
                     
             }
-            $player->sendPopup($rand); //for debug
         }
     }
 }
